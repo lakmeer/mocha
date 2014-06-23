@@ -287,7 +287,7 @@ Testing asynchronous code with Mocha could not be simpler! Simply invoke the cal
       -i, --invert                    inverts --grep matches
       -t, --timeout <ms>              set test-case timeout in milliseconds [2000]
       -s, --slow <ms>                 "slow" test threshold in milliseconds [75]
-      -w, --watch                     watch files for changes
+      -w, --watch [<ext>,...]         watch files for changes (optionally, provide additions extensions to monitor)
       -c, --colors                    force enabling of colors
       -C, --no-colors                 force disabling of colors
       -G, --growl                     enable growl notification support
@@ -304,7 +304,17 @@ Testing asynchronous code with Mocha could not be simpler! Simply invoke the cal
 
 <h3 id="watch-option">-w, --watch</h3>
 
-  Executes tests on changes to JavaScript in the CWD, and once initially.
+  Executes tests on changes to files in the CWD, and once initially.
+
+  If a value is not provided, `watch` will monitor for changes in files with any
+  of the following extensions: `js`, `coffee`, `litcoffee` or `coffee.md`.
+
+  If a value is provided, it should be a comma-separated list of additional
+  extensions to monitor. For example, to watch for changes in Livescript files:
+
+  ```
+  mocha --compilers ls:livescript --watch ls
+  ```
 
 <h3 id="compilers-option">--compilers</h3>
 

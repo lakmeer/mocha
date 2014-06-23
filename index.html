@@ -196,7 +196,7 @@ $  mocha
 })
 </code></pre>
 
-<p>Alternately, instead of using the <code>done()</code> callback, you can return a promise. This is useful if the APIs you are testing return promises instead of taking callbacks:</p>
+<p>Alternately, instead of using the <code>done()</code> callback, you can return a promise. This useful if the APIs you are testing return promises instead of taking callbacks:</p>
 
 <pre><code>beforeEach(function(){
   return db.clear().then(function() {
@@ -327,7 +327,7 @@ Options:
   -i, --invert                    inverts --grep matches
   -t, --timeout &lt;ms&gt;              set test-case timeout in milliseconds [2000]
   -s, --slow &lt;ms&gt;                 "slow" test threshold in milliseconds [75]
-  -w, --watch                     watch files for changes
+  -w, --watch [&lt;ext&gt;,...]         watch files for changes (optionally, provide additions extensions to monitor)
   -c, --colors                    force enabling of colors
   -C, --no-colors                 force disabling of colors
   -G, --growl                     enable growl notification support
@@ -345,7 +345,17 @@ Options:
 
 <h3 id="watch-option">-w, --watch</h3>
 
-<p>Executes tests on changes to JavaScript in the CWD, and once initially.</p>
+<p>Executes tests on changes to files in the CWD, and once initially.</p>
+
+<p>If a value is not provided, <code>watch</code> will monitor for changes in files with any
+  of the following extensions: <code>js</code>, <code>coffee</code>, <code>litcoffee</code> or <code>coffee.md</code>.</p>
+
+<p>If a value is provided, it should be a comma-separated list of additional
+  extensions to monitor. For example, to watch for changes in Livescript files:</p>
+
+<p><code>
+  mocha --compilers ls:livescript --watch ls
+</code></p>
 
 <h3 id="compilers-option">--compilers</h3>
 
